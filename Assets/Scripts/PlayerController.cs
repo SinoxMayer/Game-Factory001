@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
-    private Animator playerAnimator;
+    private Animator _playerAnimator;
     
     [SerializeField] private float moveSpeed = 45f;
     [SerializeField] private float jumpSpeed = 5f;
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        playerAnimator = GetComponent<Animator>();
-        playerAnimator.SetFloat("Speed_f",0.0f);
+        _playerAnimator = GetComponent<Animator>();
+        _playerAnimator.SetFloat("Speed_f",0.0f);
     }
 
     private void Update()
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.A))
         {
-            playerAnimator.SetFloat("Speed_f",0.0f);
+            _playerAnimator.SetFloat("Speed_f",0.0f);
         }
         else if (Input.GetKey(KeyCode.D))
         {
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.D))
         {
-            playerAnimator.SetFloat("Speed_f",0.0f);
+            _playerAnimator.SetFloat("Speed_f",0.0f);
         }
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     {
 
         _rigidbody.AddForce(direction * moveSpeed , ForceMode.Force);
-        playerAnimator.SetFloat("Speed_f",0.5f);
+        _playerAnimator.SetFloat("Speed_f",0.5f);
         
     }
     
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
       
         if (!_isGrounded) return;
-        playerAnimator.SetTrigger("Jump_trig");
+        _playerAnimator.SetTrigger("Jump_trig");
         _rigidbody.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
   
        
@@ -112,4 +112,6 @@ public class PlayerController : MonoBehaviour
         _isGrounded = true;
         // playerAnimator.SetBool("Jump_b",false);
     }
+
+   
 }

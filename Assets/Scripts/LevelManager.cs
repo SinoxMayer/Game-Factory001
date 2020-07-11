@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
-   
-    public void ChangeScene()
+    public bool playerNumber = true;
+    
+
+    private void ChangeScene()
     {
 
         StartCoroutine(ChangeSceneCoroutine());
@@ -14,7 +16,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator ChangeSceneCoroutine()
     {
         
-        yield return  new  WaitForSeconds(1f);
+        yield return  new  WaitForSeconds(.2f);
 
         LoadScene(GetActiveScene());
     }
@@ -32,5 +34,14 @@ public class LevelManager : MonoBehaviour
     private int GetActiveScene()
     {
         return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public void GameOver()
+    {
+        
+        //GAmeover state i değiştirebilirm.
+        ChangeScene();
+       
+        
     }
 }
