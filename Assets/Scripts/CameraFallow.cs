@@ -52,10 +52,7 @@ public class CameraFallow : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, target2.position+ offset,
                 Time.deltaTime * smoothness);
         }
-        else
-        {
-            _levelManager.GameOver();
-        }
+       
 
         // (target.position/2 + target2.position/2) 
 

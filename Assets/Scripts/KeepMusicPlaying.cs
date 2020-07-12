@@ -5,8 +5,20 @@ using UnityEngine;
 
 public class KeepMusicPlaying : MonoBehaviour
 {
+    private static KeepMusicPlaying _keepMusicPlayingControl;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //eger eşi varsa yok et bu kalsın siyor şair :)
+        if (_keepMusicPlayingControl == null)
+        {
+            _keepMusicPlayingControl = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_keepMusicPlayingControl != this)
+        {
+            Destroy(gameObject);
+        }
+        
+        
     }
 }

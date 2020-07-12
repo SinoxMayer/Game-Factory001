@@ -5,7 +5,15 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public bool playerNumber = true;
-    
+    private GameManager _gameManager;
+    private ScoreManager _scoreManager;
+
+
+    private void Awake()
+    {
+        _scoreManager = FindObjectOfType<ScoreManager>();
+        _gameManager = FindObjectOfType<GameManager>();
+    }
 
     private void ChangeScene()
     {
@@ -23,6 +31,10 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
+        if (_gameManager.playerOneIsAlive && _gameManager.playerTwoIsAlive)
+        {
+            _scoreManager.AddScore(+25);
+        }
         LoadScene(GetActiveScene()+ 1);
     }
 

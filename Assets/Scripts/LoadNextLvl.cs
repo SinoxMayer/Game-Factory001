@@ -21,7 +21,7 @@ public class LoadNextLvl : MonoBehaviour
     public IEnumerator NextLvlLastStop()
     {
         
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         _levelManager.playerNumber = true;
         _levelManager.NextLevel();
         
